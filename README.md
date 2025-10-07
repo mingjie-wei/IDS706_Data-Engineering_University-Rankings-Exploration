@@ -38,7 +38,7 @@ select max(broad_impact) as broad_impact_max
 ,min(broad_impact) as broad_impact_min
 ,count(*) as total_count
 ,sum(case when broad_impact = '' then 1 else 0 end) as null_count
-,round(100.0 * sum(case when broad_impact = '' then 1 else 0 end) / count(*), 2) AS null_percentage
+,round(100.0 * sum(case when broad_impact = '' then 1 else 0 end) / count(*), 2) as null_percentage
 from university_rankings;
 ```
 Approximately 10% of records contain null values in `broad_impact`, which is within acceptable limits but should be handled appropriately in subsequent analysis.
@@ -73,12 +73,12 @@ Key Findings:
     - world_rank and publications have the largest range (max: 1,000)
 
 - This inconsistency has critical implications for subsequent analysis:
-    - Direct cross-year comparisons of absolute rankings are not valid, especially across the 2013/2014 boundary. All downstream analyses should filter by specific years using conditions like `where year = 2015` and avoid comparing rankings across years without normalization.
-    - For temporal trend analysis, consider using percentile-based rankings or standardization methods to enable meaningful cross-year comparisons.
+    - Direct cross-year comparisons of absolute rankings are not valid, especially across the 2013/2014 boundary. Analyses should filter by specific years using conditions like `where year = 2015` and avoid comparing rankings across years without normalization.
+
 
 ### Data Distribution
 
-**1. Top 20 Countries by Number of Universities (2015)**
+**1. Top 20 countries by number of universities (2015)**
 
 I identify the countries with the most universities in 2015 to analyze geographic representation and coverage patterns.
 
@@ -92,7 +92,7 @@ limit 20;
 ```
 ![country](scripts/images/country.png)
 
-**2. Top 5 National Universities in the 10 Best-Performing Countries (2015)**
+**2. Top 5 national universities in the 10 best-performing countries (2015)**
 
 To identify leading institutions in countries with strong overall higher education systems, I first determine the 10 countries with the highest average university scores in 2015, then retrieve the top 5 nationally-ranked universities within each of these countries.
 
@@ -165,8 +165,10 @@ where institution = 'University of Oxford'
 ```
 One row has been updated as follows:
 ![U2](scripts/images/U2.png)
+
 Before:
 ![U1](scripts/images/U1.png)
+
 After:
 ![U3](scripts/images/U3.png)
 
