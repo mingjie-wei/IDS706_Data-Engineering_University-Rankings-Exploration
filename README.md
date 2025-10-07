@@ -21,7 +21,7 @@ Table: **university_rankings**
 | publications         | INTEGER | Rank in research output |
 | influence            | INTEGER | Rank in influence |
 | citations            | INTEGER | Rank in citation count |
-| broad_impact         | INTEGER | null / 1 |
+| broad_impact         | INTEGER | Rank in broad impact  |
 | patents              | INTEGER | Rank in number of patents |
 | score                | REAL    | Composite score |
 | year                 | INTEGER | Reporting year |
