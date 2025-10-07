@@ -9,7 +9,7 @@ select max(broad_impact) as broad_impact_max
 ,min(broad_impact) as broad_impact_min
 ,count(*) as total_count
 ,sum(case when broad_impact = '' then 1 else 0 end) as null_count
-,round(100.0 * sum(case when broad_impact = '' then 1 else 0 end) / count(*), 2) AS null_percentage
+,round(100.0 * sum(case when broad_impact = '' then 1 else 0 end) / count(*), 2) as null_percentage
 from university_rankings;
 
 -- score (low ~ 100)
